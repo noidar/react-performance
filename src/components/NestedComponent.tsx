@@ -38,10 +38,42 @@ function DeepChild() {
   );
 }
 
+// function ChildLevel4({ NestedComponent }: { NestedComponent: React.ComponentType }) {
+//   const [count, setCount] = useState(0);
+
+//   const increment = () => setCount((c) => c + 1);
+
+//   return (
+//     <VStack border="2px" borderColor="red.700" p={4} borderRadius="md">
+//       <Text>Child Level 4 (Local Count): {count}</Text>
+//       <Button colorScheme="red" onClick={increment}>
+//         Increment Local Count
+//       </Button>
+//       <NestedComponent />
+//     </VStack>
+//   );
+// }
+
+function ChildLevel4({ children }: { children: React.ReactNode }) {
+  const [count, setCount] = useState(0);
+
+  const increment = () => setCount((c) => c + 1);
+
+  return (
+    <VStack border="2px" borderColor="red.700" p={4} borderRadius="md">
+      <Text>Child Level 4 (Local Count): {count}</Text>
+      <Button colorScheme="red" onClick={increment}>
+        Increment Local Count
+      </Button>
+      {children}
+    </VStack>
+  );
+}
+
 function ChildLevel3({ children }: { children: ReactNode }) {
   return (
     <VStack border="2px" borderColor="green.600" p={4} borderRadius="md">
-      <Text>Child Level 3 Count</Text>
+      <Text>Child Level 3 </Text>
       {children}
     </VStack>
   );
@@ -73,7 +105,10 @@ export function NestedTree() {
         <ChildLevel1>
           <ChildLevel2>
             <ChildLevel3>
-              <DeepChild />
+              {/* <ChildLevel4 NestedComponent={DeepChild} /> */}
+              <ChildLevel4>
+                <DeepChild />
+              </ChildLevel4>
             </ChildLevel3>
           </ChildLevel2>
         </ChildLevel1>
