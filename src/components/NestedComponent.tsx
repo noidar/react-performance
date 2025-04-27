@@ -35,7 +35,6 @@ function CountProvider({ children }: { children: ReactNode }) {
   );
 }
 
-// --- Deep child using only what it needs ---
 function DeepChild() {
   const count = useCount();
   const increment = useIncrement();
@@ -49,7 +48,6 @@ function DeepChild() {
   );
 }
 
-// --- Child layers composition ---
 function ChildLevel4({ children }: { children: React.ReactNode }) {
   const [count, setCount] = useState(0);
   const increment = () => setCount((c) => c + 1);
@@ -99,7 +97,6 @@ function ChildLevel1({ children }: { children: ReactNode }) {
   );
 }
 
-// --- Main tree ---
 export function NestedTree() {
   return (
     <CountProvider>
@@ -118,8 +115,4 @@ export function NestedTree() {
   );
 }
 
-// DeepChild rerenders only when it needs to (count or increment separately).
 
-// Local state inside ChildLevel4 is independent — no unnecessary global rerenders.
-
-// You can now even memo the children easily if you want even more performance boost.
