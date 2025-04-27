@@ -1,0 +1,4 @@
+
+
+https://overreacted.io/before-you-memo/
+https://kentcdodds.com/blog/optimize-react-re-renders
